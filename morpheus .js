@@ -8,7 +8,7 @@ var periodBack
 var changeScore = []
 var cumulative
 var cumScore = []
-var prev 
+var prev
 var backShort = []
 var backLong = []
 var delay
@@ -27,17 +27,13 @@ var rand
 var result
 var status = "out"
 var newPrice
-var charges
-
-charges = 0.0005
 
 // The Complex Line function that calculates (x+y)/2 based on duration and location
-
-function complexLine (position, duration) {
+function complexLine (position, duration) { // remains unchanged
     length = position - duration; // how long you go back for
     minimumArray =[] // array of bids
     maximumArray = [] // array of asks
-    for (i = position; i > length; i--) { 
+    for (i = position; i > length; i--) {
         minimumArray.push(bid[i]); // fill up array with bids
         maximumArray.push(ask[i]); // fill up array with asks
     }
@@ -46,35 +42,31 @@ function complexLine (position, duration) {
     return result = (min+max)/2;
 }
 
-function trackLoss() {
-    /*
+function trackLoss() { // new function
     // infinite loop
-    if (status = "in" && currentPrice <= 0.5 * buyPrice) {
-        sell();
-    }
-    */
+    // if (status = "in" && currentPrice <= 0.5 * buyPrice) 0.5 should actually be a variable{
+    //     sell();
+    // }
 }
 
-function ignore() {
+function ignore() { // new function
     console.log("we do nothing here!!!")
 }
 
-function buy() {
-    console.log("buy coins")
-    console.log("set sell order at 3%")
-    trackLoss()
+function buy() { // new function
+    // console.log("buy coins")
+    // console.log("set sell order at 3% - this should be a variable i.e. the 3%")
+    // trackLoss()
     status="in"
 }
 
-function calculate () {
+function calculate () { // edited function
     newPrice = price[0]
-    status = "off"
     for (period = 0; period < market; period++) { // loop through size of market
         prev = period - 1 // previous positions
-        prev2 = period - 2 
+        prev2 = period - 2
         change = price[period] - price[prev]
-        changeRatio = (change/price[prev])*100
-        //console.log(period +": ",changeRatio)
+        changeRatio = (change/price[prev])*100 // new section
         if (change <= 0) {
             changeScore[period] = -1
         } else if (change > 0) {
@@ -92,11 +84,10 @@ function calculate () {
         fwdShort = (backShort[delays] + backLong[delays]) / 2 // MAGICK!!!!
         fwdLong = complexLine(delays, 52) // always so hard to figure out how to explain this one so let's just say "MAGICK!!!"
         // actual math
-        
         if (price[period] > fwdShort && price[period] > fwdLong) {parameter1 = true;} else {parameter1 = false;} // if you don't define "FALSE", you enter one chance. Trust me, I tried it!
         if (fwdShort > fwdLong) {parameter2 = true;} else {parameter2 = false;}
         if (cumScore[period] > 0) {parameter3 = true;} else {parameter3 = false;}
-        if (parameter1 == true && parameter2 == true && parameter3 == true) {
+        if (parameter1 == true && parameter2 == true && parameter3 == true) { // edited section
             action = "GO"
             if (status == "out" && action == "GO") {
                 buy()
@@ -105,7 +96,7 @@ function calculate () {
             }
         } else {
             action = "STOP"
-        }        
+        }
     }
 };
 
