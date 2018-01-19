@@ -54,6 +54,11 @@ function trackLoss() {
     }
     */
 }
+
+function ignore() {
+    console.log("we do nothing here!!!")
+}
+
 function buy() {
     console.log("buy coins")
     console.log("set sell order at 3%")
