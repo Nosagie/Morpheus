@@ -1,3 +1,15 @@
+# Configuration
+## Start of Trading Day
+At the start of the trading day, we need information that we'll keep in the app as a way to ensure that we have the correct base data to work with including:
+- what pairs are trading
+- what the minimum order size per trading pair is
+- what are the API limits for
+  - queries
+  - trades (per minute and per day)
+
+We'll use this API call to get this data:
+`https://api.binance.com/api/v1/exchangeInfo`
+
 # Solomon
 ## How to calculate trade size
 1. get recommendations
@@ -20,3 +32,21 @@ Available capital is the amount of accessible coin in the BTC/ETH wallet i.e. ou
 ## How to buy
 1. loop through the coins and send buy commands to the trader
 2. set status of each coin to "in" i.e. we're now "in this coin"
+
+# Trader (no name for this one yet :P)
+This doesn't run on a 3 minute cycle.
+
+## How to buy
+1. get market price at time of buy order
+2. order size = trade size / 10 (as long as order size > minimum order size per coin)
+
+- go low (as much as 0.5% below the last asking price
+- check if the offer was filled in the next second (or millisecond)
+- raise the price a little bit every single time until it's filled
+- set a sell order for the percentage like so:
+``
+4. set a sell order
+
+## How to sell
+1. get the market price at the time of the buy order
+2. order
