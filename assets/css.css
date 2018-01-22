@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+.overview {
+	background:#053C6C;
+	padding:40px 0px;
+	display:block;
+	color:white;
+	font-weight: 300;
+}
+.tag {text-transform: uppercase;font-size: 0.9em;line-height: 0.4em;color:#FFEDB5;}
+.value{font-size:2em;}
+.right{text-align: right}
+.positive-light{color:#ABEEAF;}
+.negative-light{color:#FFAFAF;}
