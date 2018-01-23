@@ -81,28 +81,33 @@ function rankTrades() {
   // pick the top [posTrades] coins and return array of finalTrades
 }
 
-// BUY
-function buy(x, y) { // where x = coin and y = position (in or out)
-  if (position == "in") {
-
+// Trading
+function startTrading(x) { // where x = coin
+  if (position == "in" && feedback == "GO") {
+    position="in"
+  } else if (position == "out" && feedback == "GO") {
+    buy(x)
+  } else {
+    position = "out"
   }
 }
 
-// Buy/Sell
-function startTrading() {
-  if (feedback == "GO") {
-	        if (position == true) {
-	            position = true;
-	        } else if (position == false) {
-	            buy();
-	        }
-	    } else if (feedback == "STOP") {
-	        if (position == true) {
-	            sell();
-	        }
-	    }
+function buy(x, y) { // where x = coin && y = buy amount
+  // make an IOC buy order
+  // on fill/partially fill response, set position to "in"
+  // return amount of coin actually bought
+  // create TAKE PROFIT sell order
+  // store order ID for TP order
 }
 
-if (action == )
+function whenToKill(x) { // function to know when to kill a position
+  if (changeRatio[prev]< 0 && changeRation[prev2] < 0 && (changeRatio[prev]+changeRatio[prev2]) < - 0.002) {
+    killPosition(x)
+  }
+}
 
-// Sale
+function killPosition(x) { // where x = coin
+  // kill order ID for TP order
+  // make a market order for the coin
+  // on filled response, set position to "out"
+}
