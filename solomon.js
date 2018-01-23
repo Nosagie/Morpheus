@@ -93,7 +93,7 @@ function startTrading(x) { // where x = coin
 }
 
 function buy(x, y) { // where x = coin && y = buy amount
-  // make an IOC buy order
+  // make an IOC buy order for coin x with y amount
   // on fill/partially fill response, set position to "in"
   // return amount of coin actually bought
   // create TAKE PROFIT sell order
@@ -101,7 +101,7 @@ function buy(x, y) { // where x = coin && y = buy amount
 }
 
 function whenToKill(x) { // function to know when to kill a position
-  if (changeRatio[prev]< 0 && changeRation[prev2] < 0 && (changeRatio[prev]+changeRatio[prev2]) < - 0.002) {
+  if ((currentPrice - buyingPrice)/buyingPrice < -0.002) {
     killPosition(x)
   }
 }
