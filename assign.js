@@ -60,7 +60,7 @@ var tenCoins = [{
   }
 ];
 
-var openCap = 10; // our open capital
+var openCap = 535; // our open capital
 var minTrade = 1; // minimum trade (in ETH - preset by us but we can change)
 var aCap // capital available after each trade
 
@@ -89,4 +89,4 @@ function assignCapital() { // assigns capital
 
 assignCapital(); // run function
 console.log(tenCoins); // see magic. in this version, it'll go round, not assign capital to the first trade and go back and add it to the smallest
-console.log(aCap)
+console.log("How much capital do I have left?: " + aCap)
