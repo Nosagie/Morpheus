@@ -61,6 +61,12 @@ Every once in a while, calls get dropped. When this happens, the next call shoul
 What data are we saving?
 - **From API calls:** every piece of data retrieved
 - **From trading activity:** trading activity - buy, sell, prices, price changes (absolute & percentage)
+  - changeRatio (data.js 81)
+  - derived values - backShort[], backLong[], fwdShort, fwdLong
+  - parameters 1 - 4
+  - action
+  - inOut
+  - cumulativeGain
 
 Why? At some point, it'd be great to use machine learning techniques to make head and tail of the market and see where we have made mistakes and can improve.
 
