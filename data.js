@@ -123,11 +123,11 @@ fetch('https://api.binance.com/api/v1/klines?symbol=' + pair[y] + '&interval=' +
       } else {
         action = "STOP"
       }
-      // THIS IS THE PSEUDO TRADER SO SHOULDN'T GO INTO MORPHEUS
+      // THIS IS THE PSEUDO TRADER + TRACKER SO SHOULDN'T GO INTO MORPHEUS
       if (inOut == "out" && action == "GO") { // sets buys if there's a buy order and we're not IN the coin
         inOut = "in"; // sets the status to "In"
-        buyPos = period; // the buy position
-        profitLoss[period] = 0 // sets the profit (or loss) to 0
+        buyPos = period; // the buy position that we'll compare our exit price with. In the main app, this should be the price at which we bought our coin.
+        profitLoss[period] = 0 // sets the profit (or loss) to 0 // this is the profit (or loss) made on a trade per position
       } else if (inOut == 'out' && action == "STOP") { // this ignores a coin
         profitLoss[period] = 0
       } else if (inOut == "in") { // set of actions if we're already IN a coin
